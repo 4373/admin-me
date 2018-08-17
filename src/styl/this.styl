@@ -1,0 +1,41 @@
+primary = #409eff
+success = #67c23a
+danger = #f56c6c
+info = #909399
+background = #eee
+
+
+
+border = 1px solid background
+
+// 
+length = 0px 4px 8px 16px 24px 48px
+direction = {
+  t: -top,
+  r: -right,
+  b: -bottom,
+  l: -left,
+  a: '',
+  x: '',
+  y: ''
+}
+for value, key in length
+  for v, k in direction
+    .m{v}-{key}
+      if v == a
+        margin: value
+      else if v == x
+        margin: 0 value
+      else if v == y 
+        margin: value 0
+      else 
+        margin{k}: value
+    .p{v}-{key}
+      if v == a
+        padding: value
+      else if v == x
+        padding: 0 value
+      else if v == y 
+        padding: value 0
+      else 
+        padding{k}: value
