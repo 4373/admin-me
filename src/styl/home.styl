@@ -1,11 +1,16 @@
 @import './this.styl'
+@import './table.styl'
+html
+  overflow-y: scroll
 
 body
   background: background
-  color: #655473
+  color: color
   font-size: 12px
   font-family: '微软雅黑', Monaco
-
+a
+  color: primary
+  text-decoration: none
 .home
   min-height: 97vh
   margin: 1.5vh auto
@@ -14,25 +19,41 @@ body
   border-radius: 10px
   display: flex
   .home-left
-    flex: 0 0 200px
-    border-right:1px solid #eee
+    flex: 0 0 256px
+    border-right:border
     .menu-box
       padding: 16px
       .menu-parent
         margin-bottom: 16px;
         .parent-name
           padding: 10px
-          color: #999
+          color: color-light
           .iconfont
             margin-right: 8px
         .menu-children
           .children-name
+            display: block
             padding: 10px 0
             padding-left: 34px
-            color: #666
-            cursor pointer
+            color: color
+            border-radius: 4px
+            transition: padding 0.2s
             &:hover
-              background: #f5f5f5
+              background: background-light
+              padding-left: 40px
+            &.active
+              background: background
   .home-right
     flex: 1 1 auto
     padding: 16px
+    header
+      margin-bottom: 16px
+      .breadcrumb
+        .breadcrumb-item
+          margin-right: 8px
+          color: color-light
+          &:hover
+            color: info
+          .iconfont
+            margin-right: 2px
+

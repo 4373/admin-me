@@ -4,25 +4,23 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+const render = h => h("router-view");
+
 export const Routes = [
   {
     path: "system",
     name: "系统的一些设置",
-    icon: "icon-setting",
-    component: {
-      render(h) {
-        return h("router-view");
-      }
+    redirect: "/system/role",
+    meta: {
+      icon: "icon-setting"
     },
+    component: { render },
     children: [
       {
         path: "role",
         name: "权限角色",
-        component: {
-          render(h) {
-            return h("router-view");
-          }
-        },
+        redirect: "/system/role/list",
+        component: { render },
         children: [
           {
             path: "list",
@@ -41,11 +39,8 @@ export const Routes = [
       {
         path: "account",
         name: "登录帐号管理",
-        component: {
-          render(h) {
-            return h("router-view");
-          }
-        },
+        redirect: "/system/account/list",
+        component: { render },
         children: [
           {
             path: "list",
@@ -62,16 +57,34 @@ export const Routes = [
         ]
       }
     ]
+  },
+  {
+    path: "other",
+    name: "一些其他的例子",
+    redirect: "/other/role",
+    meta: {
+      icon: "icon-others"
+    },
+    component: { render },
+    children: [
+      {
+        path: "",
+        name: "",
+        redirect: ""
+      }
+    ]
   }
 ];
 
 export default new Router({
-  mode: "history",
+  // mode: "history",
   base: process.env.BASE_URL,
+  linkActiveClass: "active",
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "首页",
+      redirect: "/system/role",
       component: Home,
       children: Routes
     }

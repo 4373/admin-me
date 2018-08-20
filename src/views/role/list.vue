@@ -1,46 +1,38 @@
 <template>
   <div>
-    <div>3343</div>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
-    <h1>2334242</h1>
+    <div class="search">
+      <input type="text">
+      <input type="date" v-model='date'>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>role name</th>
+          <th>rank</th>
+          <th>stutas</th> 
+          <th>create time</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for = '(item, key) in count' :key='key'>
+          <td>{{key}}</td>
+          <td>{{item % 3 * 300}}</td>
+          <td>{{Number.parseInt(item / 3)}}</td>
+          <td>active</td>
+          <td>{{new Date().toLocaleString()}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 <script>
   export default {
-    mounted() {
-      console.log(333)
+    data() {
+      return {
+        date: '',
+        count: 20
+      }
     }
   }
 </script>

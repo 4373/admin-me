@@ -6,18 +6,26 @@
       <div class="menu-box">
         <div class="menu-parent" v-for='(item, key) in routes' :key='key'>
           <div class="parent-name">
-            <i class="iconfont" :class='item.icon'></i>
+            <i class="iconfont" :class='item.meta.icon'></i>
             <span>{{item.name}}</span>
           </div>
           <div class="menu-children">
-            <div class="children-name" v-for='(i, k) in item.children' :key='k'>
-              <span>{{i.name}}</span>
-            </div>
+            <router-link :to='`/${item.path}/${i.path}`' class="children-name" v-for='(i, k) in item.children' :key='k'>
+              {{i.name}}
+            </router-link>
           </div>
         </div>
       </div>
     </div>
     <div class="home-right">
+
+      <header>
+        <div class="breadcrumb">
+          <router-link :to='item.path' v-for='(item, key) in breadcrumb' :key='key' class="breadcrumb-item">
+            <i class="iconfont" :class="item.icon"></i> {{item.name}}
+          </router-link>
+        </div>
+      </header>
       <router-view></router-view>
     </div>
   </div>
@@ -27,10 +35,46 @@
   import { Routes } from '@/router.js'
   export default {
     name: 'home',
+    computed: {
+      breadcrumb() {
+        const matched = this.$route.matched
+        const one = {
+          name: matched[0].name,
+          icon: 'icon-home',
+          path: matched[0].redirect
+        }
+        const two = {
+          name: matched[1].name,
+          icon: matched[1].meta.icon,
+          path: matched[1].redirect
+        }
+        const three = {
+          name: matched[2].name,
+          icon: 'icon-star',
+          path: this.$route.path
+        }
+        if (matched.length > 3) {
+          matched.slice(3).forEach(item => {
+            console.log(item)
+            if (item.name === undefined) {
+              if (item.path.endsWith('list')) three.name += ` · 列表 `
+              if (item.path.endsWith('deal')) three.name += ` · 处理 `
+              if (item.path.endsWith('detail')) three.name += ` · 详情 `
+            } else {
+              three.name += `${item.name} ·`
+            }
+          })
+        }
+        return [one, two, three]
+      }
+    },
     data() {
       return {
         routes: Routes
       }
+    },
+    mounted() {
+      console.log(this.$route.matched)
     }
   }
 </script>

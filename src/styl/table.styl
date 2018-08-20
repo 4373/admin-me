@@ -1,0 +1,41 @@
+header-font-weight = 400
+header-color = #757575
+
+cell-padding = 1rem
+font-weight = 400
+table-background = #fefefe
+hover-background = #f9f9f9
+border-color = #eee
+
+.table
+  width: 100%
+  max-width: 100%
+  background-color: table-background
+  border-spacing: 0
+  thead,tbody,tfoot
+    th,td
+      text-align: left
+      padding: cell-padding
+      vertical-align: top
+      border: 0
+      border-bottom: 1px solid border-color
+  thead
+    th
+      font-weight: font-weight
+      color: header-color
+      vertical-align: bottom
+      border-bottom: 1px solid #ddd
+  
+  caption + thead,colgroup + thead, thead:first-child
+    tr:first-child
+      th,td
+  tbody + tbody
+    border-top: 1px solid rgba(0,0,0,.12)
+  
+.table-hover
+  tbody
+    tr:hover
+      td
+        background-color: hover-background
+
+  
