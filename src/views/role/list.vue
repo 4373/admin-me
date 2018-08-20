@@ -28,12 +28,25 @@
   </div>
 </template>
 <script>
+  import { api } from '@/api/axios.config.js'
   export default {
     data() {
       return {
         date: '',
         count: 20
       }
+    },
+    methods: {
+      getSome() {
+        api.get('/v2/movie/top2503').then(res => {
+          console.log('list: ' + res)
+        }).catch(e => {
+          console.log(e)
+        })
+      }
+    },
+    mounted() {
+      this.getSome()
     }
   }
 </script>

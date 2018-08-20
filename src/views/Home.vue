@@ -55,7 +55,6 @@
         }
         if (matched.length > 3) {
           matched.slice(3).forEach(item => {
-            console.log(item)
             if (item.name === undefined) {
               if (item.path.endsWith('list')) three.name += ` · 列表 `
               if (item.path.endsWith('deal')) three.name += ` · 处理 `
@@ -74,7 +73,7 @@
       }
     },
     mounted() {
-      console.log(this.$route.matched)
+
     }
   }
 </script>
