@@ -1,6 +1,6 @@
 <style src='../styl/home.styl'></style>
 <template>
-  <div class="home">
+  <div class="home bs19">
     <div class="home-left">
       <img src="@/assets/logo.png" class="my-3" width=160>
       <div class="menu-box">

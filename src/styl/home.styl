@@ -1,16 +1,4 @@
-@import './this.styl'
-@import './table.styl'
-html
-  overflow-y: scroll
-
-body
-  background: background
-  color: color
-  font-size: 12px
-  font-family: '微软雅黑', Monaco
-a
-  color: primary
-  text-decoration: none
+@import './index.styl'
 .home
   min-height: 97vh
   margin: 1.5vh auto
@@ -20,14 +8,14 @@ a
   display: flex
   .home-left
     flex: 0 0 256px
-    border-right:border
+    border-right:1px solid color5
     .menu-box
       padding: 16px
       .menu-parent
         margin-bottom: 16px;
         .parent-name
           padding: 10px
-          color: color-light
+          color: color3
           .iconfont
             margin-right: 8px
         .menu-children
@@ -35,14 +23,14 @@ a
             display: block
             padding: 10px 0
             padding-left: 34px
-            color: color
+            color: color2
             border-radius: 4px
             transition: padding 0.2s
             &:hover
-              background: background-light
+              background: color5
               padding-left: 40px
             &.active
-              background: background
+              background: color6
   .home-right
     flex: 1 1 auto
     padding: 16px
@@ -51,7 +39,7 @@ a
       .breadcrumb
         .breadcrumb-item
           margin-right: 8px
-          color: color-light
+          color: color3
           &:hover
             color: info
           .iconfont
