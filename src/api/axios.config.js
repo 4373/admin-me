@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const api = axios.create({
+const Axios = axios.create({
   // baseURL: "https://api.douban.com"
 });
 
-api.interceptors.request.use(
+Axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
     return config;
@@ -15,7 +15,7 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(
+Axios.interceptors.response.use(
   function(response) {
     const { data } = response;
     return data;
@@ -28,4 +28,4 @@ api.interceptors.response.use(
   }
 );
 
-export { api };
+export default Axios;

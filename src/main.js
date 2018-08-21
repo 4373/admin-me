@@ -3,6 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+// axios
+import "./api/index";
+// component
+import "./components/index";
+
 Vue.config.productionTip = false;
 
 import "normalize.css";

@@ -28,7 +28,6 @@
   </div>
 </template>
 <script>
-  import { api } from '@/api/axios.config.js'
   export default {
     data() {
       return {
@@ -38,10 +37,8 @@
     },
     methods: {
       getSome() {
-        api.get('/v2/movie/top2503').then(res => {
-          console.log('list: ' + res)
-        }).catch(e => {
-          console.log(e)
+        this.$http('/v2/movie/top250').then(res => {
+          console.log(res)
         })
       }
     },

@@ -61,16 +61,23 @@ export const Routes = [
   {
     path: "other",
     name: "一些其他的例子",
-    redirect: "/other/role",
+    redirect: "/other/movie",
     meta: {
       icon: "icon-others"
     },
     component: { render },
     children: [
       {
-        path: "",
-        name: "",
-        redirect: ""
+        path: "movie",
+        name: "豆瓣电影",
+        redirect: "/other/movie/list",
+        component: { render },
+        children: [
+          {
+            path: "list",
+            component: () => import("./views/movie/list.vue")
+          }
+        ]
       }
     ]
   }
