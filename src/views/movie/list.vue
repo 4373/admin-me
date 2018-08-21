@@ -50,7 +50,9 @@
   </div>
 </template>
 <script>
+import query from '@/mixins/query.js'
 export default {
+  mixins: [query],
   data() {
     return {
       list: [],
@@ -100,18 +102,10 @@ export default {
         content: '非常好听'
       })
     },
-    pageChange(page, size) {
-      this.query.start = (page - 1) * size
-      this.query.count = size
-      this.refresh()
-    },
     change(n) {
       this.query.tag = n.target.value
-      this.refresh()
+      this.search()
     }
-  },
-  mounted() {
-    this.refresh()
   }
 }
 </script>

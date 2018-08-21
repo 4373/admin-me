@@ -5,7 +5,7 @@
       layout='sizes,prev, pager, next, jumper, ->, total'
       :page-size='size'
       :current-page='current'
-      :page-sizes='[20, 30, 50]'
+      :page-sizes='[5, 10, 20]'
       @current-change='currentChange'
       @prev-click='currentChange'
       @next-click='currentChange'
@@ -21,7 +21,7 @@ export default {
   props: {
     start: {
       type: Number | String,
-      default: 1
+      default: 0
     },
     count: {
       type: Number | String,
@@ -43,16 +43,20 @@ export default {
       this.current = Math.ceil(n / this.count) + 1
     },
     count(n) {
-      this.size = n
+      this.size = +n
     }
   },
   methods: {
     currentChange(n) {
-      this.$emit('change', n, this.size)
+      this.$emit('change', +n, +this.size)
     },
     sizeChange(n) {
-      this.$emit('change', 1, n)
+      this.$emit('change', 1, +n)
     }
+  },
+  mounted() {
+    this.current = Math.ceil(this.start / this.count) + 1
+    this.size = +this.count
   }
 };
 </script>
