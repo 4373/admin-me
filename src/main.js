@@ -11,6 +11,7 @@ import "./components/index";
 Vue.config.productionTip = false;
 
 import "normalize.css";
+import './plugins/element.js'
 
 new Vue({
   router,
