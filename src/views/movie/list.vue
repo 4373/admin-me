@@ -1,18 +1,117 @@
 <template>
   <div>
-    <input type="text">
+    
+    <table class="table">
+      <caption>
+        <div class="search">
+          <div class="item"><input type="text" v-model='query.q'></div>
+          <div class="item"><input type="date"></div>
+          <div class="item">
+            <select v-model='query.tag' @change='change'> 
+              <option :value="item" v-for="(item) in tags" :key='item'>
+                {{item}}
+              </option>
+            </select>
+          </div>
+          <button @click='refresh'>搜索</button>
+        </div>
+      </caption>
+      <thead>
+
+        <tr>
+          <th>序号</th>
+          <th>名称</th>
+          <th>导演</th>
+          <th>主演</th>
+          <th>类型</th>
+          <th>收藏</th>
+          <th>评分</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for = '(item, key) in list' :key='key'>
+          <td>{{ key + 1}}</td>
+          <td>{{item.title}}</td>
+          <td>
+            <span v-for = '(i, k) in item.directors' :key='k' class="mr-2">{{i.name}}</span>
+          </td>
+          <td>
+              <span v-for = '(i, k) in item.casts' :key='k' class="mr-2">{{i.name}}</span>
+          </td>
+          <td>
+              <span v-for = '(i, k) in item.genres' :key='k' class="mr-2">{{i}}</span>
+          </td>
+          <td>{{item.collect_count}}</td>
+          <td>{{item.rating.average}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ipage @change='pageChange' :total='total' :start='query.start' :count='query.count'></ipage>
   </div>
 </template>
 <script>
-  export default {
-
-    mounted() {
-      this.$http('movieNow', {
-        start: 20,
-        count: 20
-      }).then(res => {
-        console.log(res)
-      })
+export default {
+  data() {
+    return {
+      list: [],
+      total: 0,
+      query: {
+        start: 0,
+        count: 20,
+        q: '',
+        tag: ''
+      },
+      tags: [
+        '剧情',
+        '喜剧',
+        '动作',
+        '爱情',
+        '科幻',
+        '悬疑',
+        '惊悚',
+        '恐怖',
+        '犯罪',
+        '同性',
+        '音乐',
+        '歌舞',
+        '传记',
+        '历史',
+        '战争',
+        '西部',
+        '奇幻',
+        '冒险',
+        '灾难',
+        '武侠',
+        '情色'
+      ]
     }
+  },
+  methods: {
+    refresh() {
+      this.$http('movieSearch', this.query).then(res => {
+        this.list = res.subjects
+        this.total = res.total
+      })
+    },
+    reviews() {
+      this.$http('reviews', {
+        music: '34',
+        title: '神奇',
+        content: '非常好听'
+      })
+    },
+    pageChange(page, size) {
+      this.query.start = (page - 1) * size
+      this.query.count = size
+      this.refresh()
+    },
+    change(n) {
+      this.query.tag = n.target.value
+      this.refresh()
+    }
+  },
+  mounted() {
+    this.refresh()
   }
+}
 </script>

@@ -18,6 +18,11 @@ const movie = [
     name: "movieComing", // 即将上映
     url: "/v2/movie/coming_soon",
     method: "get"
+  },
+  {
+    name: 'reviews',
+    url: '/v2/music/reviews',
+    method: 'post'
   }
 ];
 
