@@ -13,7 +13,7 @@
   />
 </template>
 <script>
-import { Pagination } from "element-ui";
+import { Pagination } from 'element-ui'
 export default {
   components: {
     Pagination
@@ -36,7 +36,7 @@ export default {
     return {
       current: 1,
       size: 20
-    };
+    }
   },
   watch: {
     start(n) {
@@ -58,5 +58,5 @@ export default {
     this.current = Math.ceil(this.start / this.count) + 1
     this.size = +this.count
   }
-};
+}
 </script>

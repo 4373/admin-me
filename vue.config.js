@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
-    proxy: "https://api.douban.com"
+    proxy: 'https://api.douban.com'
   },
 
   lintOnSave: true
-};
+}

@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from 'axios'
 
-import { Message } from "element-ui"
+import { Message } from 'element-ui'
 
 const Axios = axios.create({
   // baseURL: "https://api.douban.com"
@@ -23,7 +23,7 @@ Axios.interceptors.response.use(
   },
   function({ response: { data } }) {
     Message({
-      type: "error",
+      type: 'error',
       message: data.msg
     })
     return Promise.reject(data)

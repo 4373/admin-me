@@ -32,22 +32,22 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        date: '',
-        count: 20
-      }
-    },
-    methods: {
-      getSome() {
-        this.$http('/v2/movie/top250').then(res => {
-          console.log(res)
-        })
-      }
-    },
-    mounted() {
-      this.getSome()
+export default {
+  data() {
+    return {
+      date: '',
+      count: 20
     }
+  },
+  methods: {
+    getSome() {
+      this.$http('/v2/movie/top250').then(res => {
+        console.log(res)
+      })
+    }
+  },
+  mounted() {
+    this.getSome()
   }
+}
 </script>

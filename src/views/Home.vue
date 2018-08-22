@@ -1,4 +1,5 @@
-<style src='../styl/home.styl'></style>
+<style src='../styl/home.styl'>
+</style>
 <template>
   <div class="home bs19">
     <div class="home-left">
@@ -50,48 +51,46 @@
 </template>
 
 <script>
-  import { Routes } from '@/router.js'
-  export default {
-    name: 'Home',
-    computed: {
-      breadcrumb() {
-        const matched = this.$route.matched
-        const one = {
-          name: matched[0].name,
-          icon: 'icon-home',
-          path: matched[0].redirect
-        }
-        const two = {
-          name: matched[1].name,
-          icon: matched[1].meta.icon,
-          path: matched[1].redirect
-        }
-        const three = {
-          name: matched[2].name,
-          icon: 'icon-star',
-          path: this.$route.path
-        }
-        if (matched.length > 3) {
-          matched.slice(3).forEach(item => {
-            if (item.name === undefined) {
-              if (item.path.endsWith('list')) three.name += ` · 列表 `
-              if (item.path.endsWith('deal')) three.name += ` · 处理 `
-              if (item.path.endsWith('detail')) three.name += ` · 详情 `
-            } else {
-              three.name += `${item.name} ·`
-            }
-          })
-        }
-        return [one, two, three]
+import { Routes } from '@/router.js'
+export default {
+  name: 'Home',
+  computed: {
+    breadcrumb() {
+      const matched = this.$route.matched
+      const one = {
+        name: matched[0].name,
+        icon: 'icon-home',
+        path: matched[0].redirect
       }
-    },
-    data() {
-      return {
-        routes: Routes
+      const two = {
+        name: matched[1].name,
+        icon: matched[1].meta.icon,
+        path: matched[1].redirect
       }
-    },
-    mounted() {
-
+      const three = {
+        name: matched[2].name,
+        icon: 'icon-star',
+        path: this.$route.path
+      }
+      if (matched.length > 3) {
+        matched.slice(3).forEach(item => {
+          if (item.name === undefined) {
+            if (item.path.endsWith('list')) three.name += ` · 列表 `
+            if (item.path.endsWith('deal')) three.name += ` · 处理 `
+            if (item.path.endsWith('detail')) three.name += ` · 详情 `
+          } else {
+            three.name += `${item.name} ·`
+          }
+        })
+      }
+      return [one, two, three]
     }
-  }
+  },
+  data() {
+    return {
+      routes: Routes
+    }
+  },
+  mounted() {}
+}
 </script>

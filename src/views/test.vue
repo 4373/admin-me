@@ -1,8 +1,8 @@
 <style scoped>
-  iframe{
-    min-height: 99vh;
-    width: 100%;
-  }
+iframe {
+  min-height: 99vh;
+  width: 100%;
+}
 </style>
 <template>
   <div style="background: white">
@@ -12,9 +12,7 @@
   </div>
 </template>
 <script>
-  export default {
-    mounted() {
-      
-    }
-  }
+export default {
+  mounted() {}
+}
 </script>

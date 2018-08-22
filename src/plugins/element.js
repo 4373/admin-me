@@ -1,6 +1,6 @@
-import Vue from 'vue';
+import Vue from 'vue'
 import {
-  Pagination,
+  Pagination
   // Dialog,
   // Autocomplete,
   // Dropdown,
@@ -67,9 +67,9 @@ import {
   // MessageBox,
   // Message,
   // Notification
-} from 'element-ui';
+} from 'element-ui'
 
-Vue.use(Pagination);
+Vue.use(Pagination)
 // Vue.use(Dialog);
 // Vue.use(Autocomplete);
 // Vue.use(Dropdown);
