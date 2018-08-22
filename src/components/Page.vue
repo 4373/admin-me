@@ -1,16 +1,16 @@
 <template>
-    <Pagination 
-      background
-      :total='+total'
-      layout='sizes,prev, pager, next, jumper, ->, total'
-      :page-size='size'
-      :current-page='current'
-      :page-sizes='[5, 10, 20]'
-      @current-change='currentChange'
-      @prev-click='currentChange'
-      @next-click='currentChange'
-      @size-change='sizeChange'
-      ></Pagination>
+  <Pagination 
+    background
+    :total='+total'
+    layout='sizes,prev, pager, next, jumper, ->, total'
+    :page-size='size'
+    :current-page='current'
+    :page-sizes='[5, 10, 20]'
+    @current-change='currentChange'
+    @prev-click='currentChange'
+    @next-click='currentChange'
+    @size-change='sizeChange'
+  />
 </template>
 <script>
 import { Pagination } from "element-ui";

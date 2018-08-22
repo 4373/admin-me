@@ -6,7 +6,9 @@
 </style>
 <template>
   <div style="background: white">
-    <iframe src="https://www.baidu.com"  frameborder="0"></iframe>
+    <iframe 
+      src="https://www.baidu.com" 
+      frameborder="0"/>
   </div>
 </template>
 <script>

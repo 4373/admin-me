@@ -2,16 +2,28 @@
 <template>
   <div class="home bs19">
     <div class="home-left">
-      <img src="@/assets/logo.png" class="my-3" width=160>
+      <img 
+        src="@/assets/logo.png" 
+        class="my-3" 
+        width=160>
       <div class="menu-box">
-        <div class="menu-parent" v-for='(item, key) in routes' :key='key'>
+        <div 
+          class="menu-parent" 
+          v-for='(item, key) in routes' 
+          :key='key'>
           <div class="parent-name">
-            <i class="iconfont" :class='item.meta.icon'></i>
-            <span>{{item.name}}</span>
+            <i 
+              class="iconfont" 
+              :class='item.meta.icon'/>
+            <span>{{ item.name }}</span>
           </div>
           <div class="menu-children">
-            <router-link :to='`/${item.path}/${i.path}`' class="children-name" v-for='(i, k) in item.children' :key='k'>
-              {{i.name}}
+            <router-link 
+              :to='`/${item.path}/${i.path}`' 
+              class="children-name" 
+              v-for='(i, k) in item.children' 
+              :key='k'>
+              {{ i.name }}
             </router-link>
           </div>
         </div>
@@ -21,12 +33,18 @@
 
       <header>
         <div class="breadcrumb">
-          <router-link :to='item.path' v-for='(item, key) in breadcrumb' :key='key' class="breadcrumb-item">
-            <i class="iconfont" :class="item.icon"></i> {{item.name}}
+          <router-link 
+            :to='item.path' 
+            v-for='(item, key) in breadcrumb' 
+            :key='key' 
+            class="breadcrumb-item">
+            <i 
+              class="iconfont" 
+              :class="item.icon"/> {{ item.name }}
           </router-link>
         </div>
       </header>
-      <router-view></router-view>
+      <router-view/>
     </div>
   </div>
 </template>
@@ -34,7 +52,7 @@
 <script>
   import { Routes } from '@/router.js'
   export default {
-    name: 'home',
+    name: 'Home',
     computed: {
       breadcrumb() {
         const matched = this.$route.matched

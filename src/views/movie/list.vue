@@ -4,12 +4,19 @@
     <table class="table">
       <caption>
         <div class="search">
-          <div class="item"><input type="text" v-model='query.q'></div>
+          <div class="item"><input 
+            type="text" 
+            v-model='query.q'></div>
           <div class="item"><input type="date"></div>
           <div class="item">
-            <select v-model='query.tag' @change='change'> 
-              <option :value="item" v-for="(item) in tags" :key='item'>
-                {{item}}
+            <select 
+              v-model='query.tag' 
+              @change='change'> 
+              <option 
+                :value="item" 
+                v-for="(item) in tags" 
+                :key='item'>
+                {{ item }}
               </option>
             </select>
           </div>
@@ -29,24 +36,39 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for = '(item, key) in list' :key='key'>
-          <td>{{ key + 1}}</td>
-          <td>{{item.title}}</td>
+        <tr 
+          v-for = '(item, key) in list' 
+          :key='key'>
+          <td>{{ key + 1 }}</td>
+          <td>{{ item.title }}</td>
           <td>
-            <span v-for = '(i, k) in item.directors' :key='k' class="mr-2">{{i.name}}</span>
+            <span 
+              v-for = '(i, k) in item.directors' 
+              :key='k' 
+              class="mr-2">{{ i.name }}</span>
           </td>
           <td>
-              <span v-for = '(i, k) in item.casts' :key='k' class="mr-2">{{i.name}}</span>
+            <span 
+              v-for = '(i, k) in item.casts' 
+              :key='k' 
+              class="mr-2">{{ i.name }}</span>
           </td>
           <td>
-              <span v-for = '(i, k) in item.genres' :key='k' class="mr-2">{{i}}</span>
+            <span 
+              v-for = '(i, k) in item.genres' 
+              :key='k' 
+              class="mr-2">{{ i }}</span>
           </td>
-          <td>{{item.collect_count}}</td>
-          <td>{{item.rating.average}}</td>
+          <td>{{ item.collect_count }}</td>
+          <td>{{ item.rating.average }}</td>
         </tr>
       </tbody>
     </table>
-    <ipage @change='pageChange' :total='total' :start='query.start' :count='query.count'></ipage>
+    <ipage 
+      @change='pageChange' 
+      :total='total' 
+      :start='query.start' 
+      :count='query.count'/>
   </div>
 </template>
 <script>
