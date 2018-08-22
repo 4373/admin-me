@@ -1,7 +1,7 @@
 
 
-let o = {} // create  的　query
-let e = {}  // enter 的  query
+let o = {} // create 的query
+let e = {}  // enter的query
 let d = {} // diff between create and enter
 export default {
   beforeRouteEnter (to, from, next) {

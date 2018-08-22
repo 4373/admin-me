@@ -94,6 +94,11 @@ export default new Router({
       redirect: "/system/role",
       component: Home,
       children: Routes
+    },
+    {
+      path: '/test',
+      name: '测试',
+      component: () => import('./views/test.vue')
     }
   ]
 });
