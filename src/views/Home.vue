@@ -43,6 +43,7 @@
               class="iconfont" 
               :class="item.icon"/> {{ item.name }}
           </router-link>
+          <span class="mr-5" v-show='activeApi'>正在请求{{ activeApi}} ..</span>
         </div>
       </header>
       <router-view/>
@@ -84,6 +85,13 @@ export default {
         })
       }
       return [one, two, three]
+    },
+    activeApi() {
+      const api = this.$store.state.url
+      if (api.length > 0) {
+        return api[api.length - 1]
+      }
+      return ''
     }
   },
   data() {

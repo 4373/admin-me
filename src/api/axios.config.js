@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import Store from '../store'
 import { Message } from 'element-ui'
 
 const Axios = axios.create({
@@ -9,6 +9,7 @@ const Axios = axios.create({
 Axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
+    Store.commit('requestUrl', config.url)
     return config
   },
   function(error) {
@@ -18,10 +19,12 @@ Axios.interceptors.request.use(
 )
 
 Axios.interceptors.response.use(
-  function({ data }) {
+  function({ data, config }) {
+    Store.commit('responseUrl', config.url)
     return data
   },
-  function({ response: { data } }) {
+  function({ response: { data }, config }) {
+    Store.commit('responseUrl', config.url)
     Message({
       type: 'error',
       message: data.msg
