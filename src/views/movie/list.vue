@@ -5,16 +5,17 @@
       <caption>
         <div class="search">
           <div class="item"><input 
-            type="text" 
+            type="text"
+            placeholder="输入关键字进行搜索"
+            @input='query.tag = ""'
             v-model='query.q'></div>
-          <div class="item"><input type="date"></div>
           <div class="item">
             <select 
               v-model='query.tag' 
               @change='change'> 
               <option 
                 :value="item" 
-                v-for="(item) in tags" 
+                v-for="item in tags" 
                 :key='item'>
                 {{ item }}
               </option>
@@ -37,10 +38,12 @@
       </thead>
       <tbody>
         <tr 
-          v-for = '(item, key) in list' 
+          v-for ='(item, key) in list' 
           :key='key'>
           <td>{{ key + 1 }}</td>
-          <td>{{ item.title }}</td>
+          <td>
+            <router-link :to='"/other/movie/detail?movieId=" + item.id'>{{ item.title }}</router-link>
+          </td>
           <td>
             <span 
               v-for = '(i, k) in item.directors' 
@@ -124,10 +127,13 @@ export default {
         content: '非常好听'
       })
     },
-    change(n) {
-      this.query.tag = n.target.value
+    change() {
+      this.query.q = ''
       this.search()
     }
+  },
+  mounted() {
+    console.log(this.$route.query)
   }
 }
 </script>

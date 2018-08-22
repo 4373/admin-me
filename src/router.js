@@ -76,6 +76,10 @@ export const Routes = [
           {
             path: 'list',
             component: () => import('./views/movie/list.vue')
+          },
+          {
+            path: 'detail',
+            component: () => import('./views/movie/detail.vue')
           }
         ]
       }

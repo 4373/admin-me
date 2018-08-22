@@ -14,17 +14,17 @@ for (let i = 0; i < list.length; i++) {
   }
 }
 
-Vue.prototype.$http = async function(name, params) {
+Vue.prototype.$http = function(name, params, config = {}) {
   const item = list.find(item => item.name === name)
   if (item === undefined) throw new Error(`there is no api named '${name}'`)
-  const config = {
-    url: item.url,
+  const cfg = {
+    url: `${item.url}${config.append ? '/' + config.append : ''}`, // 豆瓣的详情接口是 /detail/:id 形式
     method: item.method
   }
   if (item.method === 'get') {
-    config.params = params
+    cfg.params = params
   } else if (item.method === 'post') {
-    config.data = qs.stringify(params)
+    cfg.data = qs.stringify(params)
   }
-  return Axios(config)
+  return Axios(Object.assign(cfg, config))
 }

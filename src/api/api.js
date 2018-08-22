@@ -23,6 +23,11 @@ const movie = [
     name: 'reviews',
     url: '/v2/music/reviews',
     method: 'post'
+  },
+  {
+    name: 'movieDetail',
+    url: '/v2/movie/subject',
+    method: 'get'
   }
 ]
 

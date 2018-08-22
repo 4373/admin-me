@@ -13,6 +13,8 @@ export default {
       // 循环o  如果e里面没有 o里面的属性 或者e里面有o没有的属性
       if (e[i] && e[i] != o[i]) {
         // 如果路由有 query里面的属性 并且属性不想等
+        //从地址栏的参数来看 无法确认某个参数原始数据类型是字符串还是数组。所以这里判断下
+        // 比如 ?id=1&id=4 很明显id是个数组，但是 ?id=1， 他可能是 id:1, 或者 id:[1]
         if (Array.isArray(o[i]) && !Array.isArray(e[i])) {
           d[i] = [e[i]]
           this.query[i] = [e[i]]
