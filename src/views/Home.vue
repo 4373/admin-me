@@ -34,16 +34,22 @@
 
       <header>
         <div class="breadcrumb">
-          <router-link 
-            :to='item.path' 
+          <span 
             v-for='(item, key) in breadcrumb' 
             :key='key' 
             class="breadcrumb-item">
-            <i 
-              class="iconfont" 
-              :class="item.icon"/> {{ item.name }}
-          </router-link>
-          <span class="mr-5" v-show='activeApi'>正在请求{{ activeApi}} ..</span>
+            <router-link 
+              to='item.path'>
+              <i 
+                class="iconfont" 
+                :class="item.icon"/>
+              <span>{{ item.name }}</span>
+            </router-link>
+            <span class="mx-2 split">|</span>
+          </span>
+          <span 
+            class="mr-5 text-success" 
+            v-show='activeApi'>正在请求{{ activeApi }} ..</span>
         </div>
       </header>
       <router-view/>

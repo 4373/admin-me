@@ -21,7 +21,7 @@
               </option>
             </select>
           </div>
-          <button @click='refresh'>搜索</button>
+          <button @click='search()'>搜索</button>
         </div>
       </caption>
       <thead>
@@ -86,7 +86,7 @@ export default {
         start: 0,
         count: 20,
         q: '',
-        tag: ''
+        tag: '剧情'
       },
       tags: [
         '剧情',
