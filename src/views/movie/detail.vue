@@ -13,11 +13,11 @@ export default {
     }
   },
   mounted() {
-    this.$http('movieDetail', null, { append: this.$route.query.movieId }).then(
-      res => {
-        this.data = res
-      }
-    )
+    this.$http('movieDetail', null, {
+      append: [this.$route.query.movieId]
+    }).then(res => {
+      this.data = res
+    })
   }
 }
 </script>

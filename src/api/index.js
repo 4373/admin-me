@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Axios from './axios.config'
 import qs from 'qs'
 
-import { movie } from './api'
+import { cnode, douban } from './api'
 
-const list = movie.concat([])
+const list = cnode.concat(douban)
 
 for (let i = 0; i < list.length; i++) {
   for (let j = 0; j < list.length; j++) {
@@ -13,13 +13,25 @@ for (let i = 0; i < list.length; i++) {
     }
   }
 }
-
+/**
+ * 全局ajax接口
+ * @param {String} name 接口名
+ * @param {Object} params 參數
+ * @param {Object | undefined} config 特殊化配置
+ */
 Vue.prototype.$http = function(name, params, config = {}) {
   const item = list.find(item => item.name === name)
   if (item === undefined) throw new Error(`there is no api named '${name}'`)
+  //
   const cfg = {
-    url: `${item.url}${config.append ? '/' + config.append : ''}`, // 豆瓣的详情接口是 /detail/:id 形式
+    url: item.url,
     method: item.method
+  }
+  // // 如果接口是 /detail/:id/some/:id 形式
+  if (config.append && Array.isArray(config.append)) {
+    cfg.url = item.url.replace(/:\w+/g, () => {
+      return config.append.shift()
+    })
   }
   if (item.method === 'get') {
     cfg.params = params

@@ -1,31 +1,27 @@
 <template>
   <div>
-    
+    <div class="search">
+      <div class="item"><input 
+        type="text"
+        placeholder="输入关键字进行搜索"
+        @input='query.tag = ""'
+        v-model='query.q'></div>
+      <div class="item">
+        <select 
+          v-model='query.tag' 
+          @change='change'> 
+          <option 
+            :value="item" 
+            v-for="item in tags" 
+            :key='item'>
+            {{ item }}
+          </option>
+        </select>
+      </div>
+      <button @click='search()'>搜索</button>
+    </div>
     <table class="table">
-      <caption>
-        <div class="search">
-          <div class="item"><input 
-            type="text"
-            placeholder="输入关键字进行搜索"
-            @input='query.tag = ""'
-            v-model='query.q'></div>
-          <div class="item">
-            <select 
-              v-model='query.tag' 
-              @change='change'> 
-              <option 
-                :value="item" 
-                v-for="item in tags" 
-                :key='item'>
-                {{ item }}
-              </option>
-            </select>
-          </div>
-          <button @click='search()'>搜索</button>
-        </div>
-      </caption>
       <thead>
-
         <tr>
           <th>序号</th>
           <th>名称</th>

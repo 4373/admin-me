@@ -82,6 +82,22 @@ export const Routes = [
             component: () => import('./views/movie/detail.vue')
           }
         ]
+      },
+      {
+        path: 'cnode',
+        name: 'cnode主题',
+        redirect: '/other/cnode/list',
+        component: { render },
+        children: [
+          {
+            path: 'list',
+            component: () => import('./views/cnode/list.vue')
+          },
+          {
+            path: 'detail',
+            component: () => import('./views/cnode/detail.vue')
+          }
+        ]
       }
     ]
   }

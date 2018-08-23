@@ -1,4 +1,4 @@
-const movie = [
+const douban = [
   {
     name: 'movieSearch', // 电影搜索
     url: '/v2/movie/search',
@@ -26,9 +26,17 @@ const movie = [
   },
   {
     name: 'movieDetail',
-    url: '/v2/movie/subject',
+    url: '/v2/movie/subject/:id',
     method: 'get'
   }
 ]
 
-export { movie }
+const cnode = [
+  {
+    name: 'cnodeList',
+    url: '/api/v1/topics',
+    method: 'get'
+  }
+]
+
+export { douban, cnode }

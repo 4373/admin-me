@@ -39,7 +39,7 @@
             :key='key' 
             class="breadcrumb-item">
             <router-link 
-              to='item.path'>
+              :to='item.path'>
               <i 
                 class="iconfont" 
                 :class="item.icon"/>

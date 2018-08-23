@@ -48,19 +48,14 @@ export default {
     pageChange(page, size) {
       this.query.start = (page - 1) * size
       this.query.count = size
-      this.search(this.query.start)
+      this.search()
     },
-    search(start) {
+    search() {
       d = {}
       for (let i in o) {
         if (this.query[i] !== o[i]) {
           d[i] = this.query[i]
         }
-      }
-      if (start) {
-        d.start = start
-      } else {
-        d.start = 0
       }
       this.$router.push({ query: d })
     },
