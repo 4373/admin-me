@@ -1,36 +1,34 @@
 <template>
   <div>
     <table class="table">
-      <thead>
+      <thead slot="thead">
         <tr>
           <th>序号</th>
-          <th>名称</th>
-          <th>导演</th>
-          <th>主演</th>
-          <th>类型</th>
-          <th>收藏</th>
-          <th>评分</th>
+          <th>标题</th>
+          <th>作者</th>
+          <th>分类</th>
+          <th>评论/浏览数</th>
+          <th>创建时间</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody slot='tbody'>
         <tr 
           v-for ='(item, key) in list' 
           :key='key'>
           <td>{{ key + 1 }}</td>
           <td>
-            <span>{{ item.title }}</span>
+            <span class="ell">{{ item.title }}</span>
+          </td>
+          <td> 
+            {{ item.author.loginname }} 
           </td>
           <td>
-            {{ item.reply_count }}
+            {{ item.tab }}
           </td>
           <td>
-            {{ item.visit_count }}
+            <span class="text-success">{{ item.reply_count }}</span> / <span class="text-primary">{{ item.visit_count }}</span>
           </td>
-          <td>
-            <span>{{ item.tab }}</span>
-          </td>
-          <td>{{ item.collect_count }}</td>
-          <td>{{ item.top }}</td>
+          <td>{{ item.create_at }}</td>
         </tr>
       </tbody>
     </table>

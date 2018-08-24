@@ -1,7 +1,7 @@
 <style src='../styl/home.styl'>
 </style>
 <template>
-  <div class="home bs19">
+  <div class="home bs1">
     <div class="home-left">
       <img 
         src="@/assets/logo.png" 
@@ -52,7 +52,9 @@
             v-show='activeApi'>正在请求{{ activeApi }} ..</span>
         </div>
       </header>
-      <router-view/>
+      <div class="main">
+        <router-view/>
+      </div>
     </div>
   </div>
 </template>
